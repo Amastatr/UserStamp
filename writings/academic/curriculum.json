@@ -1,0 +1,408 @@
+{
+  "title": "The Curriculum",
+  "subtitle": "A chronological record of coursework, and the writing it produced",
+  "byline": "Rafael Mendoza-Farias Jr.  ·  English  ·  UTRGV → The University of Texas at Austin",
+  "eyebrow": "§   THE ACADEMIC CORPUS  ·  A RECORD OF STUDY",
+  "rail": [
+    "The Amastatr Innovation Haus  ·  The Lexicon",
+    "English / Español"
+  ],
+  "intro": [
+    "This is the academic corpus, kept the way The Quarry keeps the personal writing. It reads as the transcript reads, every course in the order it was taken, from the Rio Grande Valley to Austin. Beneath each course a slot is left open.",
+    "The essays will be set into them one at a time, out of order as they are found, then put back into sequence here, so that as the slots fill the record becomes a chronological compilation of the academic writing. For now the frame is empty, and that is the point of it."
+  ],
+  "stats": [
+    {
+      "n": "6",
+      "k": "Terms"
+    },
+    {
+      "n": "24",
+      "k": "Courses"
+    },
+    {
+      "n": "60",
+      "k": "Hours"
+    },
+    {
+      "n": "English",
+      "k": "Major"
+    }
+  ],
+  "institutions": [
+    {
+      "name": "The University of Texas Rio Grande Valley",
+      "sub": "Transferred · Fall 2023 – Spring 2024 · 24 hours",
+      "terms": [
+        {
+          "name": "Fall 2023",
+          "note": "",
+          "courses": [
+            {
+              "code": "HIST 1302",
+              "title": "U.S. History 2",
+              "equiv": "→ HIS 315L",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "PHIL 2306",
+              "title": "Introduction to Ethics",
+              "equiv": "→ PHL 318",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "THTF 1310",
+              "title": "Theatre Appreciation",
+              "equiv": "→ T D 301",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "Character Analyzation & Need to Tell: William",
+                  "label": "",
+                  "meta": "Original character · an explorer-cartographer",
+                  "grade": "",
+                  "note": "+ earlier draft on file · character not yet named"
+                },
+                {
+                  "title": "Light and Scenery Design",
+                  "label": "question 6",
+                  "meta": "Romantic dinner · a woman, fearing the house",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "The Haunting of Hill House: It Could Have Been Better",
+                  "label": "theater review",
+                  "meta": "Jackson / Leslie · dir. Brian Warren · Jeffers Theater",
+                  "grade": "",
+                  "note": ""
+                }
+              ]
+            },
+            {
+              "code": "UNIV 1301",
+              "title": "Learning Framework",
+              "equiv": "→ EDP 304",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "Educational Autobiography",
+                  "label": "",
+                  "meta": "Autobiographical · UTRGV",
+                  "grade": "",
+                  "note": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring 2024",
+          "note": "",
+          "courses": [
+            {
+              "code": "ANTH 2351",
+              "title": "Cultural Anthropology",
+              "equiv": "→ ANT 302",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "ENGL 1301",
+              "title": "Rhetoric and Composition I",
+              "equiv": "→ RHE 306",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "Of America’s Loves: Speed, The Road, and Destiny",
+                  "label": "",
+                  "meta": "Investigative essay · the automobile and post-war America",
+                  "grade": "",
+                  "note": "+ drafts and Writing Center feedback on file"
+                },
+                {
+                  "title": "Learning, Power, and Hardship",
+                  "label": "",
+                  "meta": "Pleasantville · The Truman Show · comparative",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "The Way to a Spring",
+                  "label": "multimodal narrative",
+                  "meta": "Autobiographical",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "Avenues of a Writer",
+                  "label": "reflection & poem",
+                  "meta": "On multimodality and inheritance",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "Vignette: First Flight",
+                  "label": "",
+                  "meta": "Takeoff · sensory exercise",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "On a Passage from Alasdair Gray’s Lanark",
+                  "label": "outline",
+                  "meta": "Close reading · placement tentative",
+                  "grade": "",
+                  "note": ""
+                }
+              ]
+            },
+            {
+              "code": "ENGL 1305",
+              "title": "Writing in Cultural Studies",
+              "equiv": "→ RHE 309J",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "More Than Just a Car: A Selective Mechanism of Socio-Economic Standing",
+                  "label": "",
+                  "meta": "Semiotic analysis · the automobile as class sign",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "Translations of Gloria Anzaldúa’s Excerpts",
+                  "label": "translation",
+                  "meta": "Anzaldúa · Borderlands / La Frontera",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "A Big World For Little People",
+                  "label": "",
+                  "meta": "Cuarón · Children of Men",
+                  "grade": "",
+                  "note": "+ annotated bibliography on file"
+                },
+                {
+                  "title": "Reflection: Personal Responsibility",
+                  "label": "common essay",
+                  "meta": "On a semester of cultural study",
+                  "grade": "",
+                  "note": ""
+                }
+              ]
+            },
+            {
+              "code": "SPAN 2321",
+              "title": "Spanish in the U.S.",
+              "equiv": "→ Elective",
+              "inprog": false,
+              "deposits": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The University of Texas at Austin",
+      "sub": "College of Liberal Arts · English",
+      "terms": [
+        {
+          "name": "Fall 2024",
+          "note": "University Honors",
+          "courses": [
+            {
+              "code": "E 310D",
+              "title": "Introduction to Digital Studies",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "E 314L",
+              "title": "The Pulitzer Prize",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "E 316M",
+              "title": "American Literature",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "AST 301",
+              "title": "Introduction to Astronomy",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            }
+          ]
+        },
+        {
+          "name": "Spring 2025",
+          "note": "University Honors",
+          "courses": [
+            {
+              "code": "ECO 304K",
+              "title": "Introduction to Microeconomics",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "E 343N",
+              "title": "The Nobel Prize",
+              "equiv": "",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "Reasoning Right to Avoid Wrong: Kantian Morals in Works of Authors that Won the Nobel Prize in Literature",
+                  "label": "",
+                  "meta": "Kant · Saramago · Kang · Ishiguro",
+                  "grade": "",
+                  "note": "+ defining-topic proposal · 05/03/2025 · on file"
+                }
+              ]
+            },
+            {
+              "code": "P S 303",
+              "title": "Introductory Physical Science I: Mechanics and Heat",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "UGS 303",
+              "title": "Contested Istanbul",
+              "equiv": "",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "The Change in Making a Change",
+                  "label": "",
+                  "meta": "Ümit · A Memento for Istanbul",
+                  "grade": "",
+                  "note": ""
+                },
+                {
+                  "title": "Understanding People: About Dry Grasses",
+                  "label": "film review",
+                  "meta": "Ceylan · About Dry Grasses",
+                  "grade": "",
+                  "note": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fall 2025",
+          "note": "University Honors",
+          "courses": [
+            {
+              "code": "AMS 356",
+              "title": "Main Currents in American Culture Since 1865",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "E 354C",
+              "title": "Crime Fiction",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            },
+            {
+              "code": "E 375L",
+              "title": "Victorian Literature",
+              "equiv": "",
+              "inprog": false,
+              "deposits": [
+                {
+                  "title": "On Carlyle’s Moral Law and Victorian Dignity",
+                  "label": "working title",
+                  "meta": "Carlyle · Chadwick · Dickens",
+                  "grade": "97",
+                  "note": ""
+                },
+                {
+                  "title": "Women: Amidst the Tumult of Change in the Era of Victoria",
+                  "label": "",
+                  "meta": "Martineau · Rossetti · Browning · Gaskell",
+                  "grade": "97",
+                  "note": ""
+                },
+                {
+                  "title": "The Destitution of Empire",
+                  "label": "",
+                  "meta": "Hardy · Schreiner · Carlyle",
+                  "grade": "100",
+                  "note": ""
+                }
+              ]
+            },
+            {
+              "code": "M 302",
+              "title": "Introduction to Mathematics",
+              "equiv": "",
+              "inprog": false,
+              "deposits": []
+            }
+          ]
+        },
+        {
+          "name": "Spring 2026",
+          "note": "In progress",
+          "courses": [
+            {
+              "code": "GEO 302J",
+              "title": "Crisis of Our Planet",
+              "equiv": "",
+              "inprog": true,
+              "deposits": []
+            },
+            {
+              "code": "E 343J",
+              "title": "Literature and Social Justice",
+              "equiv": "",
+              "inprog": true,
+              "deposits": []
+            },
+            {
+              "code": "E 372L",
+              "title": "The American Renaissance",
+              "equiv": "",
+              "inprog": true,
+              "deposits": []
+            },
+            {
+              "code": "E 374G",
+              "title": "Beowulf",
+              "equiv": "",
+              "inprog": true,
+              "deposits": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "colophon": {
+    "kick": "ON THIS RECORD",
+    "h2": "Empty by design",
+    "p": [
+      "The frame is set to the transcript. The writing fills it as it is deposited, the same way the Biographage fills with its people and the Quarry filled with its years. What is here now is the shape of the study. What comes is the work it made."
+    ]
+  },
+  "footer": [
+    "AMASTATR INNOVATION HAUS · THE LEXICON · ACADEMIC SERIES",
+    "rafaelmendozafarias.com · McAllen / Austin, Texas"
+  ]
+}

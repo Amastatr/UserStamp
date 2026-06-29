@@ -61,6 +61,33 @@ order: 1
 ---
 ```
 
+## The academic book — *The Curriculum*
+
+The `academic` book is special: instead of section folders, it is driven by a
+single data file, **`writings/academic/curriculum.json`**, which holds the whole
+transcript — institutions → terms → courses → essay *slots*. It renders as *The
+Curriculum*: every course in the order it was taken, each with a slot that is
+either empty (`essay slot · awaiting deposit`) or filled with one or more
+**deposits**. Its display face is Cormorant Garamond, matching the reference.
+
+### Depositing an essay
+
+Find the course in `curriculum.json` and add an object to its `deposits` array:
+
+```json
+{
+  "title": "The Destitution of Empire",
+  "label": "final paper",          // optional tag, shown as [FINAL PAPER]
+  "meta": "Hardy · Schreiner · Carlyle",
+  "grade": "100",                  // optional, shown in crimson
+  "note": "+ draft and outline on file"   // optional
+}
+```
+
+Rebuild and the slot fills. Because the JSON is the single source of truth, the
+frame and the compiled PDF always stay in sync — the slots fill as the writing
+is deposited, exactly as the document describes.
+
 ## Building
 
 ```bash

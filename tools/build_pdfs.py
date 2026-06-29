@@ -251,8 +251,58 @@ def _fmt_date(d: dt.date) -> str:
     return f"{d.strftime('%B')} {d.day}, {d.year}"
 
 
+def build_curriculum(key: str, book: dict, cfg: dict, data: dict) -> Path:
+    """Render the transcript-shaped academic frame (The Curriculum)."""
+    pdf = HausBook(short_title=data.get("title", "Curriculum"), organization=cfg["organization"])
+    pdf.display = hs.CORMORANT
+    pdf.set_title(data.get("title", key.title()))
+    pdf.set_author(cfg.get("author", ""))
+
+    pdf.masthead(
+        data.get("rail", [cfg["organization"], ""]),
+        data.get("eyebrow", ""),
+        data.get("title", key.title()),
+        data.get("subtitle", ""),
+        data.get("byline", ""),
+    )
+    for i, para in enumerate(data.get("intro", [])):
+        pdf.intro_paragraph(para, first=(i == 0))
+    if data.get("stats"):
+        pdf.stat_strip(data["stats"])
+
+    n_dep = 0
+    for inst in data.get("institutions", []):
+        pdf.institution(inst["name"], inst.get("sub", ""))
+        pdf.start_section(inst["name"])
+        for term in inst.get("terms", []):
+            pdf.term(term["name"], term.get("note", ""))
+            pdf.start_section(term["name"], level=1)
+            for course in term.get("courses", []):
+                pdf.course(course["code"], course["title"],
+                           course.get("equiv", ""), course.get("inprog", False))
+                if course.get("deposits"):
+                    pdf.deposits(course["deposits"])
+                    n_dep += len(course["deposits"])
+                else:
+                    pdf.empty_slot()
+
+    col = data.get("colophon", {})
+    pdf.colophon(col.get("kick", ""), col.get("h2", ""), col.get("p", []),
+                 data.get("footer", []))
+
+    out = OUTPUT_DIR / f"{key}.pdf"
+    pdf.output(str(out))
+    n_courses = sum(len(t["courses"]) for inst in data.get("institutions", [])
+                    for t in inst.get("terms", []))
+    print(f"  {key}: curriculum — {n_courses} course(s), {n_dep} deposit(s) -> output/{key}.pdf")
+    return out
+
+
 def build_book(key: str, book: dict, cfg: dict) -> Path | None:
     writings_dir = ROOT / book.get("writings", f"writings/{key}")
+    curriculum = writings_dir / "curriculum.json"
+    if curriculum.exists():
+        return build_curriculum(key, book, cfg, json.loads(curriculum.read_text()))
     sections = collect_book(writings_dir)
     if not sections:
         print(f"  {key}: no writings under {writings_dir.relative_to(ROOT)} — skipped")
