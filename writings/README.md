@@ -1,14 +1,17 @@
 # writings/
 
-Drop your writings here, one Markdown file per piece, organised by field:
+Your writings, organised as **books → sections → pieces**:
 
 ```
-writings/<field>/YYYY-MM-DD-slug.md
+writings/<book>/<NN-section>/YYYY-MM-DD-slug.md
 ```
 
-Each subfolder is a **field** (e.g. `essays/`, `poetry/`). The date prefix in
-the filename sets chronological order. See [`../WRITINGS.md`](../WRITINGS.md)
-for the full guide and front-matter options.
+- Top-level folders (`individual`, `academic`, `published`) are **books**, each
+  declared in [`../config.json`](../config.json) and built into its own PDF.
+- Subfolders are **sections** (`§ SECTION` dividers); a numeric prefix sets
+  their order. Add a `_section.md` to give a section a title and lead.
+- Each Markdown file is one **piece**; the `YYYY-MM-DD` prefix sets its place in
+  the chronological sequence.
 
-This `README.md` is ignored by the builder — only `*.md` writing files are
-collected.
+See [`../WRITINGS.md`](../WRITINGS.md) for the full guide. `README.md` and
+`_section.md` files are not treated as pieces.

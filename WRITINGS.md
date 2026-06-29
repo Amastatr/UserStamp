@@ -1,63 +1,87 @@
-# Collected Writings — PDF builder
+# The Lexicon — writings → PDF dossiers
 
-A small, version-controlled system for gathering your writings across different
-fields into **chronological PDF books** — one PDF per field, plus a combined
-master PDF of everything. Add a Markdown file, rebuild, and the piece drops into
-the collection in date order automatically.
+A version-controlled system that compiles your writings into **chronological PDF
+books in the Haus style** — the editorial look of *The Quarry*: three typefaces
+(Fraunces display, Newsreader text, JetBrains Mono labels) over an oxblood /
+crimson accent palette, with a cover, § section dividers, and a running header.
+
+There are three books, each built independently:
+
+| Book | Collects | Output |
+|------|----------|--------|
+| `individual` | personal writing | `output/individual.pdf` |
+| `academic`   | scholarship and inquiry | `output/academic.pdf` |
+| `published`  | released work, by publication date | `output/published.pdf` |
 
 ## Layout
 
 ```
-writings/<field>/YYYY-MM-DD-slug.md   your writings, one file per piece
-config.json                            author name + collection title
-tools/build_pdfs.py                    the generator
-output/<field>.pdf                     one chronological PDF per field
-output/all-writings.pdf                every field combined (built when >1 field)
+config.json                                   books, titles, author, imprint
+assets/fonts/                                 bundled OFL fonts (Fraunces, etc.)
+tools/haus_style.py                           the typographic engine
+tools/build_pdfs.py                           the builder
+writings/<book>/<NN-section>/YYYY-MM-DD-slug.md   your writings
+output/<book>.pdf                             the built dossiers
 ```
 
-A "field" is just a subfolder of `writings/` — `essays`, `poetry`, `letters`,
-`notes`, whatever you like. Create a new folder to start a new field.
+- A **book** is a top-level folder under `writings/` named in `config.json`.
+- A **section** is a subfolder (becomes a `§ SECTION` divider). Prefix it with a
+  number to order it, e.g. `01-philosophy`, `02-history`.
+- A **piece** is one Markdown file. The `YYYY-MM-DD` filename prefix sets its
+  place in the chronological order.
 
-## Adding a piece of writing
+## Adding a piece
 
-1. Create a Markdown file under the right field folder. Name it with the date
-   first so it sorts naturally, e.g. `writings/essays/2026-07-01-on-rivers.md`.
-2. Optionally add a front-matter block at the top:
+1. Drop a Markdown file in the right section, dated first in the name:
+   `writings/academic/01-philosophy/2026-02-10-on-time-and-entropy.md`
+2. Optional front matter (anything omitted is inferred):
 
    ```markdown
    ---
-   title: On Rivers
-   date: 2026-07-01
-   field: essays        # optional; defaults to the folder name
-   format: verse        # optional; "verse" preserves line breaks (auto for poetry)
+   title: On Time and Entropy
+   date: 2026-02-10
+   format: verse        # preserve line breaks (automatic for a "poetry" section)
    ---
 
-   Your writing in Markdown...
+   Your writing in Markdown…
    ```
 
-   Anything you omit is inferred: the **date** from the filename prefix, the
-   **title** from the first `# heading` or the filename, the **field** from the
-   folder.
+3. Rebuild.
 
-3. Rebuild (see below). The piece is inserted in chronological order.
+### Naming a section
 
-## Building the PDFs
+Add a `_section.md` to a section folder to set its title, descriptive lead, and
+order:
 
-```bash
-bash tools/bootstrap.sh      # one-time per environment: installs fpdf2
-python3 tools/build_pdfs.py  # rebuilds every PDF in output/
+```markdown
+---
+title: Philosophy
+lead: Arguments made carefully, with their premises on the page.
+order: 1
+---
 ```
 
-Commit the regenerated files in `output/` so the books persist — this
-environment is ephemeral and only committed files survive.
+## Building
 
-## Formatting supported
+```bash
+bash tools/bootstrap.sh              # one-time per environment: installs fpdf2
+python3 tools/build_pdfs.py          # build every book
+python3 tools/build_pdfs.py academic # build just one book
+```
 
-Standard Markdown within a piece: `# headings`, `**bold**`, `*italic*`,
-`> block quotes`, `- bullet` and `1. numbered` lists, `---` horizontal rules,
-and ```` ``` ```` fenced code blocks. Prose paragraphs are justified in a serif
-face; **verse** (the `poetry` field, or `format: verse`) keeps your line breaks
-exactly as written.
+Commit the regenerated files in `output/` — this environment is ephemeral and
+only committed files survive.
 
-Each field PDF and the combined PDF open with a cover page and a clickable table
-of contents, with PDF bookmarks for every piece.
+## Formatting inside a piece
+
+Standard Markdown: `## headings` (set in Fraunces), `**bold**`, `*italic*`,
+`> pull quotes` (rendered at primary size, the way the dossier treats
+quotations), `- bullet` / `1. numbered` lists, `---` rules, and ```` ``` ````
+code blocks. Prose is justified in Newsreader; **verse** keeps your line breaks.
+
+## Fonts
+
+The three families are open-source (SIL OFL) and bundled as static cuts in
+`assets/fonts/`, so builds are reproducible with no network access. Licenses are
+alongside them. Fraunces, Newsreader, and JetBrains Mono are the type system of
+the Haus style.

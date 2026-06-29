@@ -1,5 +1,29 @@
 {
+  "organization": "Amastatr Innovation Haus",
+  "imprint": "The Lexicon",
   "author": "Rafael Mendoza Farías",
-  "collection_title": "Collected Writings",
-  "fields": []
+  "place": "McAllen / Austin, Texas",
+  "books": {
+    "individual": {
+      "title": "Collected Writings",
+      "short_title": "Collected Writings",
+      "subtitle": "Personal work, gathered in sequence",
+      "dossier_line": "A reading dossier · individual writing",
+      "writings": "writings/individual"
+    },
+    "academic": {
+      "title": "Academic Writings",
+      "short_title": "Academic Writings",
+      "subtitle": "Scholarship and inquiry, in chronological order",
+      "dossier_line": "A reading dossier · academic writing",
+      "writings": "writings/academic"
+    },
+    "published": {
+      "title": "Published Writings",
+      "short_title": "Published Writings",
+      "subtitle": "Work released into the world, by date of publication",
+      "dossier_line": "A reading dossier · published writing",
+      "writings": "writings/published"
+    }
+  }
 }
