@@ -1,9 +1,9 @@
-# UserStamp
+# UserStamp · AI Contextualizers
 
 Tags each AI-chat message with the team member sending it, for shared
 subscriptions. Manifest V3, local only.
 
-UserStamp is the third in the **AI Performance Enhancers** line, after
+UserStamp is the third in the **AI Contextualizers** line, after
 TimeStamp and GeoStamp. It prepends a small `[USER · <label>]` tag to the
 front of each message you send so a team sharing one AI subscription can
 attribute work to a person. It is a label the team agrees to set, not
@@ -29,4 +29,5 @@ conversation**.
 The seat label is stored locally on this device (`chrome.storage.local`) and
 is never transmitted.
 
-> Placeholder README — to be replaced.
+## AI Contextualizers
+One of three sibling extensions, TimeStamp, GeoStamp, and UserStamp, by Amastatr Innovation Haus, sharing one discipline: stamps fire once, on send only, and everything stays local.
