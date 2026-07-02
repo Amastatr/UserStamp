@@ -43,6 +43,7 @@ function renderMode() {
 
   const on = state.userstamp_mode === "solo" || state.userstamp_mode === "team";
   el("statusDot").classList.toggle("on", on);
+  el("statusDot").textContent = on ? "ON" : "OFF";
 }
 
 function renderSolo() {

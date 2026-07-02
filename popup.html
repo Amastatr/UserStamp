@@ -7,6 +7,7 @@
     <style>
       :root {
         --green: #188038;
+        --red: #c8102e;
         --border: #dadce0;
         --muted: #5f6368;
         --bg: #ffffff;
@@ -37,10 +38,17 @@
         font-weight: 600;
       }
       .dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: #bdc1c6;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 30px;
+        padding: 2px 7px;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+        background: var(--red);
       }
       .dot.on {
         background: var(--green);

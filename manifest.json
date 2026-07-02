@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UserStamp",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Tags each AI-chat message with the team member sending it, for shared subscriptions. MV3, local only.",
   "action": {
     "default_popup": "popup.html",
