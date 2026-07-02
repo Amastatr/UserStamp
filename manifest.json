@@ -1,19 +1,21 @@
 {
   "manifest_version": 3,
   "name": "UserStamp",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Tags each AI-chat message with the team member sending it, for shared subscriptions. MV3, local only.",
   "action": {
     "default_popup": "popup.html",
     "default_title": "UserStamp",
     "default_icon": {
       "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
   },
   "icons": {
     "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
