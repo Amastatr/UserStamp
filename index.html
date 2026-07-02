@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amastatr Innovation Haus</title>
+<meta name="description" content="The parent house over ventures in matter, record, and force: armor research, web systems for the trades, editorial work, browser instruments, and the archive. McAllen and Austin, Texas.">
+<meta name="theme-color" content="#9a9da0">
+
+<!-- Social card. NOTE: og:image and og:url must be made absolute once the
+     production domain is set; scrapers do not resolve relative paths. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Amastatr Innovation Haus">
+<meta property="og:description" content="The parent house over ventures in matter, record, and force. McAllen and Austin, Texas.">
+<meta property="og:image" content="assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Amastatr Innovation Haus">
+<meta name="twitter:description" content="The parent house over ventures in matter, record, and force. McAllen and Austin, Texas.">
+<meta name="twitter:image" content="assets/og-card.png">
+
+<link rel="icon" type="image/svg+xml" href="assets/emblem.svg">
+
+<link rel="preload" href="assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/newsreader-var-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<script>
+/* Emblem entrance gate: draw once per session, never under reduced motion.
+   Runs before first paint so there is no flash; on failure the emblem is
+   simply shown complete. */
+(function () {
+  try {
+    var k = "haus-emblem-drawn";
+    if (!sessionStorage.getItem(k) &&
+        !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.className += " emblem-draw";
+      sessionStorage.setItem(k, "1");
+    }
+  } catch (e) { /* storage unavailable: emblem renders static */ }
+})();
+</script>
+
+<style>
+/* ────────────────────────────────────────────────────────────────
+   Amastatr Innovation Haus · v20 · the front door
+   Register: graphite atmosphere, near-black ink, crimson accent,
+   silver brightwork used sparingly. Editorial folio typography.
+   ──────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("assets/fonts/newsreader-var-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("assets/fonts/newsreader-var-italic-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/jetbrains-mono-var-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Metric-matched fallbacks so the layout holds while webfonts arrive. */
+@font-face {
+  font-family: "Newsreader-fallback";
+  src: local("Georgia");
+  ascent-override: 66.2%;
+  descent-override: 23.9%;
+  line-gap-override: 0%;
+  size-adjust: 111%;
+}
+@font-face {
+  font-family: "JetBrainsMono-fallback";
+  src: local("Courier New");
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+:root {
+  /* Atmosphere, carried from the v19 register */
+  --atm-top: #c4c7ca;
+  --atm-mid: #9a9da0;
+  --atm-low: #6e7174;
+  --atm-shade: #4a4d50;
+
+  /* Ink */
+  --ink: #0a0a0a;
+  --ink-soft: #1d1d1f;
+  --ink-mute: #4a4d50;
+  --ink-quiet: #6a6e72;
+
+  /* Accents */
+  --crimson: #C8102E;
+  --crimson-deep: #8a0a1e;
+
+  /* Brightwork, used sparingly */
+  --silver-hi: #C4C8CB;
+  --silver-lo: #A9ADB1;
+
+  --serif: "Newsreader", "Newsreader-fallback", Georgia, "Iowan Old Style", serif;
+  --mono: "JetBrains Mono", "JetBrainsMono-fallback", ui-monospace, "Courier New", monospace;
+
+  --measure: 62ch;
+  --col: 880px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background:
+    radial-gradient(120% 80% at 80% 0%, rgba(184,162,138,0.10) 0%, transparent 55%),
+    radial-gradient(140% 100% at 50% 100%, var(--atm-shade) 0%, transparent 60%),
+    linear-gradient(180deg, var(--atm-top) 0%, var(--atm-mid) 55%, var(--atm-low) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* The folio sheet: one light wash under the whole column so the ink
+   stays legible over every depth of the atmosphere. */
+.wrap {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4.5vw, 48px);
+  background: rgba(250, 251, 252, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 30px 80px -40px rgba(15, 17, 19, 0.45);
+}
+
+::selection { background: var(--crimson); color: #fff; }
+
+a { color: var(--crimson); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--crimson-deep); }
+:focus-visible { outline: 2px solid var(--crimson); outline-offset: 3px; border-radius: 2px; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink-soft);
+  color: #fff;
+  padding: 10px 16px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  z-index: 10;
+}
+.skip:focus { left: 12px; top: 12px; }
+
+/* ── Brightwork rules: a machined edge, lit from above ── */
+.rule {
+  border: 0;
+  height: 2px;
+  margin: 0;
+  background: linear-gradient(180deg, var(--silver-hi), var(--silver-lo));
+}
+
+/* ── Type ── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 20px;
+}
+.eyebrow .tick { color: var(--crimson); margin-right: 8px; }
+
+h1, h2 {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0;
+  font-weight: 480;
+}
+h1 em, h2 em, .vname em {
+  font-style: italic;
+  color: var(--crimson);
+}
+
+/* ── Masthead ── */
+header.masthead {
+  text-align: center;
+  padding: clamp(48px, 9vh, 92px) 0 34px;
+}
+.emblem-wrap {
+  position: relative;
+  width: clamp(96px, 16vw, 132px);
+  margin: 0 auto 26px;
+  overflow: hidden;
+}
+.emblem { display: block; width: 100%; height: auto; }
+
+header.masthead h1 {
+  font-size: clamp(2.1rem, 6.4vw, 3.6rem);
+  font-weight: 420;
+}
+.standfirst {
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: 18px auto 0;
+  line-height: 1.45;
+}
+.dateline {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 22px 0 0;
+}
+
+nav.doors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 26px;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 34px 0 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0,0,0,0.14);
+  border-bottom: 1px solid rgba(0,0,0,0.14);
+}
+nav.doors a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+}
+nav.doors a:hover { color: var(--crimson); border-bottom-color: var(--crimson); }
+
+/* ── Sections ── */
+section { padding: clamp(44px, 7vh, 72px) 0; }
+section + section { border-top: 0; }
+section .body { max-width: var(--measure); }
+section p { margin: 0 0 1em; }
+section p:last-child { margin-bottom: 0; }
+.lead { font-size: clamp(1.08rem, 2.2vw, 1.19rem); line-height: 1.62; }
+
+/* ── Register of Ventures ── */
+.register { list-style: none; margin: 0; padding: 0; }
+.venture {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 4px 22px;
+  padding: 26px 14px 26px 0;
+  border-top: 1px solid rgba(0,0,0,0.14);
+  border-left: 3px solid transparent;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+.venture:last-child { border-bottom: 1px solid rgba(0,0,0,0.14); }
+.venture:hover, .venture:focus-within {
+  background: var(--v-tint);
+  border-left-color: var(--v-a);
+}
+.vnum {
+  grid-row: 1 / span 3;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-quiet);
+  padding-top: 7px;
+  padding-left: 14px;
+  white-space: nowrap;
+  transition: color 220ms ease;
+}
+.venture:hover .vnum, .venture:focus-within .vnum { color: var(--v-b); }
+.vname {
+  font-size: clamp(1.3rem, 3vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0;
+  transition: color 220ms ease;
+}
+.venture:hover .vname, .venture:focus-within .vname { color: var(--v-a); }
+.vthesis {
+  margin: 6px 0 10px;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+.vstatus {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.vdot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--v-b);
+  border: 1px solid rgba(0,0,0,0.18);
+}
+@media (max-width: 560px) {
+  .venture { grid-template-columns: 1fr; padding-left: 14px; }
+  .vnum { grid-row: auto; padding-left: 0; padding-top: 0; margin-bottom: 2px; }
+}
+
+/* ── Writing ── */
+.folio-list { list-style: none; margin: 22px 0 0; padding: 0; }
+.folio-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+  padding: 13px 0;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+.folio-list li:last-child { border-bottom: 1px solid rgba(0,0,0,0.12); }
+.folio-title { font-style: italic; font-size: 1.12rem; font-weight: 500; }
+.folio-meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-left: auto;
+}
+@media (max-width: 560px) { .folio-meta { margin-left: 0; width: 100%; } }
+
+/* ── Contact ── */
+.address {
+  font-family: var(--mono);
+  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+  letter-spacing: 0.04em;
+  margin-top: 18px;
+  word-break: break-all;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 40px 0 72px;
+  text-align: center;
+  color: var(--ink-mute);
+  font-size: 0.95rem;
+}
+footer .where { margin-bottom: 8px; }
+footer .est {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+footer .prior { margin-top: 18px; font-size: 0.86rem; }
+footer a { color: var(--ink-mute); }
+footer a:hover { color: var(--crimson); }
+
+/* ── The emblem draws itself: once per session, skipped under
+      reduced motion, and the text never waits on it. ── */
+@media (prefers-reduced-motion: no-preference) {
+  .emblem-draw .emblem .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ink 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  /* Order per the drafting hand: left leg, right leg, the datum drawn
+     through, then the crimson tick stamped last and hard. */
+  .emblem-draw .emblem .d1 { animation-delay: 0.05s; }
+  .emblem-draw .emblem .d2 { animation-delay: 0.4s; }
+  .emblem-draw .emblem .d3 { animation-delay: 0.9s; }
+  .emblem-draw .emblem .d4 { animation-delay: 1.65s; animation-duration: 0.15s; animation-timing-function: linear; }
+  @keyframes ink { to { stroke-dashoffset: 0; } }
+
+  /* The settle: one pass of silver sheen after the ink dries. */
+  .emblem-draw .emblem-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+    transform: translateX(-130%);
+    animation: sheen 0.9s ease-out 2.15s forwards;
+    pointer-events: none;
+  }
+  @keyframes sheen { to { transform: translateX(130%); } }
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="emblem-wrap">
+    <!-- The Haus mark, drawn stroke by stroke on first load.
+         Source of truth: assets/emblem.svg -->
+    <svg class="emblem" viewBox="0 0 240 240" role="img" aria-label="The Haus emblem: a drafted gable A crossed by a silver datum line, closed by a crimson registration tick">
+      <defs>
+        <linearGradient id="steel" gradientUnits="userSpaceOnUse" x1="0" y1="129.5" x2="0" y2="134.5">
+          <stop offset="0" stop-color="#A9ADB1"/>
+          <stop offset="1" stop-color="#7C8288"/>
+        </linearGradient>
+      </defs>
+      <line class="draw d1" pathLength="1" x1="128.2" y1="25.7" x2="52" y2="196" stroke="#1d1d1f" stroke-width="11"/>
+      <line class="draw d2" pathLength="1" x1="111.8" y1="25.7" x2="188" y2="196" stroke="#1d1d1f" stroke-width="11"/>
+      <line class="draw d3" pathLength="1" x1="58" y1="132" x2="182" y2="132" stroke="url(#steel)" stroke-width="5"/>
+      <line class="draw d4" pathLength="1" x1="204" y1="176" x2="204" y2="196" stroke="#C8102E" stroke-width="8"/>
+    </svg>
+  </div>
+
+  <!-- COPY:DRAFT -->
+  <h1>Amastatr Innovation <em>Haus</em></h1>
+  <!-- COPY:DRAFT -->
+  <p class="standfirst">The parent house over ventures in matter, record, and force, working from McAllen and Austin, built for what endures.</p>
+  <p class="dateline">McAllen &middot; Austin &middot; Est. 2026</p>
+
+  <nav class="doors" aria-label="Sections">
+    <a href="#doctrine">Doctrine</a>
+    <a href="#register">Register</a>
+    <a href="#writing">Writing</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section id="doctrine" aria-labelledby="doctrine-h">
+  <p class="eyebrow" id="doctrine-h"><span class="tick">&#9613;</span>The Doctrine</p>
+  <div class="body">
+    <!-- COPY:DRAFT -->
+    <p class="lead">
+      The Haus is held to one discipline: build what survives its encounter with the world.
+      Its materials are matter and record, steel and glass and language, chosen the way a bench chooses them, for how they behave under load.
+      Entropy is not treated as the enemy here; it is the condition, and design is the answer the Haus gives it in material form.
+      Force is studied with respect and answered with structure: the panel that takes the second strike, the system that takes the second year, the sentence that takes the second reading.
+      Impact is the only review that matters, and it files on its own schedule.
+      What the Haus makes is meant to age into patina rather than failure, holding its coordinates while the surrounding weather moves.
+      Creation is treated as a form of accounting: every made thing is a claim about what deserves to persist, entered in the register and kept.
+      The ventures below are one architecture read in different materials.
+      This page is the front door, and the door is load-bearing.
+    </p>
+  </div>
+</section>
+
+<hr class="rule" aria-hidden="true">
+
+<section id="register" aria-labelledby="register-h">
+  <p class="eyebrow" id="register-h"><span class="tick">&#9613;</span>Register of Ventures</p>
+  <div class="body">
+    <!-- COPY:DRAFT -->
+    <p>Six working lines, one architecture. Each entry names the venture, states its thesis, and files its present status.</p>
+  </div>
+  <ol class="register" id="ventures">
+    <noscript>
+      <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">Blue Caller Solutions &middot; web systems for the trades &middot; pre-launch</li>
+      <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">ImpactStop &middot; multi-hit protective armor &middot; materials R&amp;D</li>
+      <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">Patina Works &middot; finishing for objects meant to age well &middot; in design</li>
+      <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">AI Contextualizers &middot; instruments that give AI work its coordinates &middot; TimeStamp shipped</li>
+      <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">The Mendoza Edit &middot; editorial services &middot; commissions by inquiry</li>
+      <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14); border-bottom:1px solid rgba(0,0,0,0.14);">The Lexicon &middot; the relational knowledge work &middot; kept on its own timescale</li>
+    </noscript>
+  </ol>
+</section>
+
+<hr class="rule" aria-hidden="true">
+
+<section id="writing" aria-labelledby="writing-h">
+  <p class="eyebrow" id="writing-h"><span class="tick">&#9613;</span>Selected Writing</p>
+  <div class="body">
+    <!-- COPY:DRAFT -->
+    <p class="lead">
+      Twenty-five and counting published features at RGVision Magazine, written from inside the Rio Grande Valley: the businesses, the builders, and the working culture of the border, reported in the same register the Haus builds in.
+    </p>
+    <!-- COPY:DRAFT · The two titles below are manuscript works from the folio.
+         Named RGVision feature titles, with links or PDF downloads, should be
+         set here when those assets are provided; none were present in this
+         folder. -->
+    <ul class="folio-list">
+      <li><span class="folio-title">Have You Seen the Moon?</span><span class="folio-meta">Manuscript &middot; the reflective line</span></li>
+      <li><span class="folio-title">From a Dallas, Texas Balcony</span><span class="folio-meta">From the folio</span></li>
+      <li><span class="folio-title">RGVision features</span><span class="folio-meta">25+ published &middot; titles to be set</span></li>
+    </ul>
+  </div>
+</section>
+
+<hr class="rule" aria-hidden="true">
+
+<section id="about" aria-labelledby="about-h">
+  <p class="eyebrow" id="about-h"><span class="tick">&#9613;</span>About</p>
+  <div class="body">
+    <!-- COPY:DRAFT -->
+    <p class="lead">
+      I build from the Rio Grande Valley's inheritance: a place that taught force as a first language, and a family that kept its tools close.
+      I studied what breaks, at the bench and in the record, and turned the lesson toward what stops it: armor that meets the second strike, surfaces that meet the second decade, an archive built to meet the second century.
+      The work runs between McAllen and Austin, most of it kept, all of it dated.
+      The vow that governs it sits on the drafting table, not in the gun safe: I design nothing that fires, and I answer force with structure.
+    </p>
+  </div>
+</section>
+
+<hr class="rule" aria-hidden="true">
+
+<section id="contact" aria-labelledby="contact-h">
+  <p class="eyebrow" id="contact-h"><span class="tick">&#9613;</span>Contact</p>
+  <div class="body">
+    <!-- COPY:DRAFT · One address, per the house rule. Confirm this is the
+         address that should stand on the public front door. -->
+    <p class="lead">One address, no form. Write when the work warrants it.</p>
+    <p class="address"><a href="mailto:mendozafariasrafael@gmail.com">mendozafariasrafael@gmail.com</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <hr class="rule" aria-hidden="true" style="margin-bottom:40px;">
+  <!-- COPY:DRAFT -->
+  <div class="where">McAllen &middot; Austin, Texas, USA, <span>The Globe Earth</span>.</div>
+  <div class="est">Est. 2026 &middot; Amastatr Innovation Haus</div>
+  <p class="prior">Previous form: <a href="legacy/haus_about_html_19.html">the About exhibition, v19</a>, preserved whole in the archive.</p>
+</footer>
+
+</div>
+
+<script>
+/* Register of Ventures: entries are data, not markup. Add a venture by
+   adding an object here; the markup renders itself. */
+(function () {
+  var VENTURES = [
+    {
+      name: "Blue Caller Solutions",
+      thesis: "Web systems and lead automation for the trades: the contractor's surface, made dignified.",
+      status: "Pre-launch · with Diego and Emilio",
+      a: "#0d2a4f", b: "#d4a017", tint: "rgba(13,42,79,0.07)"
+    },
+    {
+      name: "ImpactStop",
+      thesis: "Multi-hit protective armor engineered against the failure the ceramic incumbents share: the second strike. Armor only; that is a vow, not a positioning.",
+      status: "Materials R&D · McAllen · Austin",
+      a: "#8F6E1E", b: "#2B2E31", tint: "rgba(143,110,30,0.08)"
+    },
+    {
+      name: "Patina Works",
+      thesis: "Finishing for objects meant to age well: surfaces and restorations that take time as a collaborator, not a thief.",
+      status: "In design",
+      a: "#5F2A24", b: "#8A7340", tint: "rgba(232,226,212,0.5)"
+    },
+    {
+      name: "AI Contextualizers",
+      thesis: "Instruments that give AI work its coordinates: the moment, the place, the person at the seat, the working file.",
+      status: "TimeStamp shipped v1.0.0 · three more in line",
+      a: "#4a4d50", b: "#C8102E", tint: "rgba(200,16,46,0.05)", bracket: true
+    },
+    {
+      name: "The Mendoza Edit",
+      thesis: "Editorial services in the house register: drafting, revision, and the shaping of records meant to be kept.",
+      status: "Commissions by inquiry",
+      a: "#1d1d1f", b: "#A9ADB1", tint: "rgba(29,29,31,0.05)"
+    },
+    {
+      name: "The Lexicon",
+      thesis: "The relational knowledge work: one linguistic identity archived whole, analyzed without sentiment, and positioned against the field of human expression.",
+      status: "v0 · kept cold and local · its own timescale",
+      a: "#0b0d11", b: "#C4C8CB", tint: "rgba(11,13,17,0.06)"
+    }
+  ];
+
+  var ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+  var host = document.getElementById("ventures");
+  if (!host) return;
+
+  VENTURES.forEach(function (v, i) {
+    var li = document.createElement("li");
+    li.className = "venture";
+    li.style.setProperty("--v-a", v.a);
+    li.style.setProperty("--v-b", v.b);
+    li.style.setProperty("--v-tint", v.tint);
+
+    var num = document.createElement("span");
+    num.className = "vnum";
+    var numeral = ROMAN[i] || String(i + 1);
+    num.textContent = v.bracket ? "[ " + numeral + " ]" : numeral;
+    li.appendChild(num);
+
+    var name = document.createElement("h2");
+    name.className = "vname";
+    name.textContent = v.name;
+    li.appendChild(name);
+
+    var thesis = document.createElement("p");
+    thesis.className = "vthesis";
+    thesis.textContent = v.thesis;
+    li.appendChild(thesis);
+
+    var status = document.createElement("p");
+    status.className = "vstatus";
+    var dot = document.createElement("span");
+    dot.className = "vdot";
+    status.appendChild(dot);
+    status.appendChild(document.createTextNode(v.status));
+    li.appendChild(status);
+
+    host.appendChild(li);
+  });
+})();
+</script>
+
+</body>
+</html>
