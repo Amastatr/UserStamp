@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Amastatr Innovation Haus emblem: a drafted gable A crossed by a silver datum line, closed by a crimson registration tick">
+  <!-- The Haus mark: a drafted gable A. The legs cross at the apex in a
+       drafted X overshoot, a silver datum line runs through as the crossbar,
+       and a crimson registration tick closes the baseline at right.
+       Original mark, drawn for the Haus. Refined per the judge panel:
+       four strokes, one module, no knots. -->
+  <defs>
+    <!-- userSpaceOnUse: a bounding-box gradient is undefined on a
+         perfectly horizontal line and renders nothing. -->
+    <linearGradient id="steel" gradientUnits="userSpaceOnUse" x1="0" y1="129.5" x2="0" y2="134.5">
+      <stop offset="0" stop-color="#A9ADB1"/>
+      <stop offset="1" stop-color="#7C8288"/>
+    </linearGradient>
+  </defs>
+  <line x1="128.2" y1="25.7" x2="52" y2="196" stroke="#1d1d1f" stroke-width="11"/>
+  <line x1="111.8" y1="25.7" x2="188" y2="196" stroke="#1d1d1f" stroke-width="11"/>
+  <line x1="58" y1="132" x2="182" y2="132" stroke="url(#steel)" stroke-width="5"/>
+  <line x1="204" y1="176" x2="204" y2="196" stroke="#C8102E" stroke-width="8"/>
+</svg>
