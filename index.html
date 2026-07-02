@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amastatr Innovation Haus</title>
+<!-- COPY:DRAFT · descriptions below are prose copy -->
 <meta name="description" content="The parent house over ventures in matter, record, and force: armor research, web systems for the trades, editorial work, browser instruments, and the archive. McAllen and Austin, Texas.">
 <meta name="theme-color" content="#9a9da0">
 
-<!-- Social card. NOTE: og:image and og:url must be made absolute once the
-     production domain is set; scrapers do not resolve relative paths. -->
+<!-- Social card. NOTE: og:image, og:url, and twitter:image must be made
+     absolute once the production domain is set; scrapers do not resolve
+     relative paths. og:url is left empty until the domain exists. -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="">
 <meta property="og:title" content="Amastatr Innovation Haus">
 <meta property="og:description" content="The parent house over ventures in matter, record, and force. McAllen and Austin, Texas.">
 <meta property="og:image" content="assets/og-card.png">
@@ -21,6 +24,7 @@
 <meta name="twitter:image" content="assets/og-card.png">
 
 <link rel="icon" type="image/svg+xml" href="assets/emblem.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
 
 <link rel="preload" href="assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/newsreader-var-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -28,15 +32,16 @@
 
 <script>
 /* Emblem entrance gate: draw once per session, never under reduced motion.
-   Runs before first paint so there is no flash; on failure the emblem is
-   simply shown complete. */
+   Runs before first paint so there is no flash; on any failure the emblem
+   renders complete and static. setItem runs before the class is added so
+   a throwing write can never strand a hidden emblem. */
 (function () {
   try {
     var k = "haus-emblem-drawn";
     if (!sessionStorage.getItem(k) &&
         !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.documentElement.className += " emblem-draw";
       sessionStorage.setItem(k, "1");
+      document.documentElement.className += " emblem-draw";
     }
   } catch (e) { /* storage unavailable: emblem renders static */ }
 })();
@@ -70,14 +75,16 @@
   font-style: normal;
   font-display: swap;
 }
-/* Metric-matched fallbacks so the layout holds while webfonts arrive. */
+/* Metric-matched fallbacks so the layout holds while webfonts arrive.
+   Georgia runs wider than Newsreader, so it is shrunk, not inflated;
+   overrides are Newsreader's 73.5/26.5 metrics divided by size-adjust. */
 @font-face {
   font-family: "Newsreader-fallback";
   src: local("Georgia");
-  ascent-override: 66.2%;
-  descent-override: 23.9%;
+  ascent-override: 78.2%;
+  descent-override: 28.2%;
   line-gap-override: 0%;
-  size-adjust: 111%;
+  size-adjust: 94%;
 }
 @font-face {
   font-family: "JetBrainsMono-fallback";
@@ -129,12 +136,22 @@ body {
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--ink);
+  background-color: var(--atm-mid);
+  min-height: 100vh;
+}
+
+/* The atmosphere rides a promoted fixed layer instead of
+   background-attachment: fixed, so scrolling stays composited
+   on low-end mobile and iOS. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background:
     radial-gradient(120% 80% at 80% 0%, rgba(184,162,138,0.10) 0%, transparent 55%),
     radial-gradient(140% 100% at 50% 100%, var(--atm-shade) 0%, transparent 60%),
     linear-gradient(180deg, var(--atm-top) 0%, var(--atm-mid) 55%, var(--atm-low) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
 }
 
 /* The folio sheet: one light wash under the whole column so the ink
@@ -143,7 +160,7 @@ body {
   max-width: var(--col);
   margin: 0 auto;
   padding: 0 clamp(20px, 4.5vw, 48px);
-  background: rgba(250, 251, 252, 0.5);
+  background: rgba(250, 251, 252, 0.75);
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 30px 80px -40px rgba(15, 17, 19, 0.45);
@@ -151,9 +168,11 @@ body {
 
 ::selection { background: var(--crimson); color: #fff; }
 
-a { color: var(--crimson); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { color: var(--crimson-deep); }
-:focus-visible { outline: 2px solid var(--crimson); outline-offset: 3px; border-radius: 2px; }
+/* Deep crimson carries link text for contrast over every band of the
+   atmosphere; bright crimson stays on large and decorative uses only. */
+a { color: var(--crimson-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--crimson-deep); text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--crimson-deep); outline-offset: 3px; border-radius: 2px; }
 
 .skip {
   position: absolute;
@@ -188,7 +207,7 @@ a:hover { color: var(--crimson-deep); }
 }
 .eyebrow .tick { color: var(--crimson); margin-right: 8px; }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: var(--serif);
   font-optical-sizing: auto;
   letter-spacing: -0.015em;
@@ -196,7 +215,7 @@ h1, h2 {
   margin: 0;
   font-weight: 480;
 }
-h1 em, h2 em, .vname em {
+h1 em, h2 em, h3 em, .vname em {
   font-style: italic;
   color: var(--crimson);
 }
@@ -255,7 +274,7 @@ nav.doors a {
   padding: 4px 2px;
   border-bottom: 1px solid transparent;
 }
-nav.doors a:hover { color: var(--crimson); border-bottom-color: var(--crimson); }
+nav.doors a:hover { color: var(--crimson-deep); border-bottom-color: var(--crimson-deep); }
 
 /* ── Sections ── */
 section { padding: clamp(44px, 7vh, 72px) 0; }
@@ -277,7 +296,7 @@ section p:last-child { margin-bottom: 0; }
   transition: background 220ms ease, border-color 220ms ease;
 }
 .venture:last-child { border-bottom: 1px solid rgba(0,0,0,0.14); }
-.venture:hover, .venture:focus-within {
+.venture:hover {
   background: var(--v-tint);
   border-left-color: var(--v-a);
 }
@@ -286,13 +305,13 @@ section p:last-child { margin-bottom: 0; }
   font-family: var(--mono);
   font-size: 0.82rem;
   letter-spacing: 0.06em;
-  color: var(--ink-quiet);
+  color: var(--ink-mute);
   padding-top: 7px;
   padding-left: 14px;
   white-space: nowrap;
   transition: color 220ms ease;
 }
-.venture:hover .vnum, .venture:focus-within .vnum { color: var(--v-b); }
+.venture:hover .vnum { color: var(--v-a); }
 .vname {
   font-size: clamp(1.3rem, 3vw, 1.55rem);
   font-weight: 500;
@@ -301,7 +320,7 @@ section p:last-child { margin-bottom: 0; }
   margin: 0;
   transition: color 220ms ease;
 }
-.venture:hover .vname, .venture:focus-within .vname { color: var(--v-a); }
+.venture:hover .vname { color: var(--v-a); }
 .vthesis {
   margin: 6px 0 10px;
   color: var(--ink-soft);
@@ -416,7 +435,8 @@ footer a:hover { color: var(--crimson); }
 
 <header class="masthead">
   <div class="emblem-wrap">
-    <!-- The Haus mark, drawn stroke by stroke on first load.
+    <!-- COPY:DRAFT · the aria-label below is alt text
+         The Haus mark, drawn stroke by stroke on first load.
          Source of truth: assets/emblem.svg -->
     <svg class="emblem" viewBox="0 0 240 240" role="img" aria-label="The Haus emblem: a drafted gable A crossed by a silver datum line, closed by a crimson registration tick">
       <defs>
@@ -450,7 +470,7 @@ footer a:hover { color: var(--crimson); }
 <main id="main">
 
 <section id="doctrine" aria-labelledby="doctrine-h">
-  <p class="eyebrow" id="doctrine-h"><span class="tick">&#9613;</span>The Doctrine</p>
+  <h2 class="eyebrow" id="doctrine-h"><span class="tick" aria-hidden="true">&#9613;</span>The Doctrine</h2>
   <div class="body">
     <!-- COPY:DRAFT -->
     <p class="lead">
@@ -470,27 +490,29 @@ footer a:hover { color: var(--crimson); }
 <hr class="rule" aria-hidden="true">
 
 <section id="register" aria-labelledby="register-h">
-  <p class="eyebrow" id="register-h"><span class="tick">&#9613;</span>Register of Ventures</p>
+  <h2 class="eyebrow" id="register-h"><span class="tick" aria-hidden="true">&#9613;</span>Register of Ventures</h2>
   <div class="body">
     <!-- COPY:DRAFT -->
     <p>Six working lines, one architecture. Each entry names the venture, states its thesis, and files its present status.</p>
   </div>
-  <ol class="register" id="ventures">
-    <noscript>
+  <ol class="register" id="ventures"></ol>
+  <!-- COPY:DRAFT · no-script fallback for the register -->
+  <noscript>
+    <ol class="register">
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">Blue Caller Solutions &middot; web systems for the trades &middot; pre-launch</li>
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">ImpactStop &middot; multi-hit protective armor &middot; materials R&amp;D</li>
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">Patina Works &middot; finishing for objects meant to age well &middot; in design</li>
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">AI Contextualizers &middot; instruments that give AI work its coordinates &middot; TimeStamp shipped</li>
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14);">The Mendoza Edit &middot; editorial services &middot; commissions by inquiry</li>
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14); border-bottom:1px solid rgba(0,0,0,0.14);">The Lexicon &middot; the relational knowledge work &middot; kept on its own timescale</li>
-    </noscript>
-  </ol>
+    </ol>
+  </noscript>
 </section>
 
 <hr class="rule" aria-hidden="true">
 
 <section id="writing" aria-labelledby="writing-h">
-  <p class="eyebrow" id="writing-h"><span class="tick">&#9613;</span>Selected Writing</p>
+  <h2 class="eyebrow" id="writing-h"><span class="tick" aria-hidden="true">&#9613;</span>Selected Writing</h2>
   <div class="body">
     <!-- COPY:DRAFT -->
     <p class="lead">
@@ -511,7 +533,7 @@ footer a:hover { color: var(--crimson); }
 <hr class="rule" aria-hidden="true">
 
 <section id="about" aria-labelledby="about-h">
-  <p class="eyebrow" id="about-h"><span class="tick">&#9613;</span>About</p>
+  <h2 class="eyebrow" id="about-h"><span class="tick" aria-hidden="true">&#9613;</span>About</h2>
   <div class="body">
     <!-- COPY:DRAFT -->
     <p class="lead">
@@ -526,7 +548,7 @@ footer a:hover { color: var(--crimson); }
 <hr class="rule" aria-hidden="true">
 
 <section id="contact" aria-labelledby="contact-h">
-  <p class="eyebrow" id="contact-h"><span class="tick">&#9613;</span>Contact</p>
+  <h2 class="eyebrow" id="contact-h"><span class="tick" aria-hidden="true">&#9613;</span>Contact</h2>
   <div class="body">
     <!-- COPY:DRAFT · One address, per the house rule. Confirm this is the
          address that should stand on the public front door. -->
@@ -547,6 +569,7 @@ footer a:hover { color: var(--crimson); }
 
 </div>
 
+<!-- COPY:DRAFT · the venture theses and status lines live in the script below -->
 <script>
 /* Register of Ventures: entries are data, not markup. Add a venture by
    adding an object here; the markup renders itself. */
@@ -562,7 +585,7 @@ footer a:hover { color: var(--crimson); }
       name: "ImpactStop",
       thesis: "Multi-hit protective armor engineered against the failure the ceramic incumbents share: the second strike. Armor only; that is a vow, not a positioning.",
       status: "Materials R&D · McAllen · Austin",
-      a: "#8F6E1E", b: "#2B2E31", tint: "rgba(143,110,30,0.08)"
+      a: "#6B521A", b: "#2B2E31", tint: "rgba(143,110,30,0.08)"
     },
     {
       name: "Patina Works",
@@ -607,7 +630,7 @@ footer a:hover { color: var(--crimson); }
     num.textContent = v.bracket ? "[ " + numeral + " ]" : numeral;
     li.appendChild(num);
 
-    var name = document.createElement("h2");
+    var name = document.createElement("h3");
     name.className = "vname";
     name.textContent = v.name;
     li.appendChild(name);

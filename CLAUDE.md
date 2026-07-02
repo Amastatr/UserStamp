@@ -21,7 +21,8 @@ Then open http://localhost:8000/. Use HTTP, not file://, or the font preloads lo
 - Graphite atmosphere, near-black ink, crimson `#C8102E` as the working accent.
 - Silver brightwork, sparingly: gradient `#C4C8CB` to `#A9ADB1` on dark grounds (the social card), darkened to `#A9ADB1` to `#7C8288` on the light page where the bright pair washes out.
 - Two font families only: Newsreader (display and body, variable, roman + italic) and JetBrains Mono (labels, datelines, status lines). Latin subsets, preloaded, metric-matched fallbacks hold the layout.
-- The folio sheet: the content column carries a light wash (`rgba(250,251,252,0.5)`) so ink stays legible over every depth of the fixed gradient. Do not remove it.
+- The folio sheet: the content column carries a light wash (`rgba(250,251,252,0.75)`) so ink stays legible over every depth of the atmosphere. The alpha is contrast-tuned (WCAG 4.5:1 for the muted mono text at the darkest band); do not lower it.
+- Link text uses `--crimson-deep` (#8a0a1e) for contrast; bright `#C8102E` is reserved for large and decorative uses (the h1 em, the tick, the dots). The atmosphere gradient lives on a `body::before` fixed layer, not `background-attachment: fixed`; keep it there for composited scrolling.
 
 ## The emblem
 
