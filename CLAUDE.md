@@ -4,7 +4,8 @@ Read before editing. This repo holds two products side by side.
 
 ## What lives here
 
-1. **The Haus front door (v20)**: `index.html`, one static page, no framework, no build step. Inline CSS and JS, self-hosted subset fonts in `assets/fonts/`, the vector emblem in `assets/emblem.svg`, the social card in `assets/og-card.png`.
+1. **The Haus front door (v20)**: `index.html`, one static page, no framework, no build step. Inline CSS and JS, self-hosted subset fonts in `assets/fonts/`, the vector emblem in `assets/emblem.svg`, the social card in `assets/og-card.png`. The page is image-forward with layered text: a hero plate, venture thumbnails, a six-plate teaser, and the doctrine folded behind a read-on disclosure. Short lines for the walk-through viewer; the full prose one click deep.
+1b. **The Plates**: `plates.html` plus `assets/plates.js` plus `assets/images/`. The image record, built to scale to hundreds of photographs. Plates are data, not markup: add an object to `PLATES` in `assets/plates.js` (src, alt, label, text, line, optional pos) and drop the image in `assets/images/`, resized to roughly 900 to 1300px long edge, JPEG quality about 80. Grid images lazy-load; the reader dialog carries the long prose. Captions currently in the file are verbatim from the v19 exhibition and the Biographage record; do not rewrite them without the owner's word.
 2. **The UserStamp extension**: `manifest.json`, `content.js`, `background.js`, `popup.html`, `popup.js`, `icons/`. Third instrument in the AI stamps line after TimeStamp and GeoStamp. Do not move these files; the extension loads unpacked from the repo root.
 3. **The archive**: `legacy/haus_about_html_19.html` is the previous site (the About exhibition, v19), preserved byte for byte. Old URLs stay alive: `haus_about_html_19.html` and `amastatr_haus_about.html` at root are redirect stubs. Never edit anything under `legacy/`; it keeps its own rules (its em dashes are historical and stay).
 
@@ -45,8 +46,9 @@ The Register renders from the `VENTURES` array at the bottom of `index.html`. Ad
 
 ## Budgets (acceptance criteria, keep them honest)
 
-- Total transfer under 500KB (currently about 285KB). Lighthouse 95+ across categories, LCP under 1.5s on 4G.
-- If you add an image, subset it hard or it blows the budget; the old inline-everything pattern belongs to `legacy/` only.
+- The budget is per initial view, not per site: index.html loads about 385KB before scroll (HTML 26KB, fonts 259KB, hero 76KB, emblem 2KB); everything below the fold lazy-loads. Keep the initial view under 500KB and LCP under 1.5s on 4G.
+- Images ship as files in `assets/images/`, never inlined as base64; the inline-everything pattern belongs to `legacy/` only. Each image: long edge 900 to 1300px, JPEG quality about 80, `loading="lazy"` unless it is the hero.
+- The hero is a baked crop (`hero-the-becoming.jpg`, 76KB); if you swap it, bake the crop again rather than shipping the full frame.
 - The emblem animation animates `stroke-dashoffset`, `transform`, `opacity` only. Keep it that way for 60fps.
 
 ## v19 (legacy) notes

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Plates · Amastatr Innovation Haus</title>
+<!-- COPY:DRAFT -->
+<meta name="description" content="The image record of the Amastatr Innovation Haus: the progression, the first castings, the bench, and the archive. Short captions for the walk-through; the full record one click deep.">
+<meta name="theme-color" content="#9a9da0">
+<link rel="icon" type="image/svg+xml" href="assets/emblem.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
+
+<link rel="preload" href="assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+/* ────────────────────────────────────────────────────────────────
+   The Plates · the image record of the Haus
+   Shares the v20 register: graphite atmosphere, folio sheet,
+   crimson accent, silver brightwork. Grid first, prose one
+   click deep.
+   ──────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("assets/fonts/newsreader-var-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("assets/fonts/newsreader-var-italic-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/jetbrains-mono-var-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader-fallback";
+  src: local("Georgia");
+  ascent-override: 78.2%;
+  descent-override: 28.2%;
+  line-gap-override: 0%;
+  size-adjust: 94%;
+}
+@font-face {
+  font-family: "JetBrainsMono-fallback";
+  src: local("Courier New");
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+:root {
+  --atm-top: #c4c7ca;
+  --atm-mid: #9a9da0;
+  --atm-low: #6e7174;
+  --atm-shade: #4a4d50;
+  --ink: #0a0a0a;
+  --ink-soft: #1d1d1f;
+  --ink-mute: #4a4d50;
+  --crimson: #C8102E;
+  --crimson-deep: #8a0a1e;
+  --silver-hi: #C4C8CB;
+  --silver-lo: #A9ADB1;
+  --serif: "Newsreader", "Newsreader-fallback", Georgia, "Iowan Old Style", serif;
+  --mono: "JetBrains Mono", "JetBrainsMono-fallback", ui-monospace, "Courier New", monospace;
+  --col: 1080px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--atm-mid);
+  min-height: 100vh;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(120% 80% at 80% 0%, rgba(184,162,138,0.10) 0%, transparent 55%),
+    radial-gradient(140% 100% at 50% 100%, var(--atm-shade) 0%, transparent 60%),
+    linear-gradient(180deg, var(--atm-top) 0%, var(--atm-mid) 55%, var(--atm-low) 100%);
+}
+
+.wrap {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3.5vw, 40px) 72px;
+  background: rgba(250, 251, 252, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 30px 80px -40px rgba(15, 17, 19, 0.45);
+}
+
+::selection { background: var(--crimson); color: #fff; }
+a { color: var(--crimson-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--crimson-deep); outline-offset: 3px; border-radius: 2px; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink-soft); color: #fff; padding: 10px 16px;
+  font-family: var(--mono); font-size: 0.8rem; z-index: 10;
+}
+.skip:focus { left: 12px; top: 12px; }
+
+/* ── Mini masthead ── */
+header.plate-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  padding: 26px 0 18px;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(180deg, var(--silver-hi), var(--silver-lo)) 1;
+  margin-bottom: 10px;
+}
+.ph-brand { display: flex; align-items: center; gap: 14px; }
+.ph-brand svg { width: 44px; height: 44px; flex: none; }
+.ph-brand .t { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.ph-brand .t em { font-style: italic; color: var(--crimson); }
+.ph-brand .s {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-mute); display: block; margin-top: 3px;
+}
+.ph-back { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 440;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 26px 0 10px;
+}
+h1 em { font-style: italic; color: var(--crimson); }
+.dek { max-width: 62ch; color: var(--ink-soft); margin: 0 0 8px; }
+.count { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+
+/* ── Line sections ── */
+h2.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 48px 0 6px;
+  line-height: 1.4;
+}
+h2.eyebrow .tick { color: var(--crimson); margin-right: 8px; }
+.line-dek { color: var(--ink-soft); font-size: 0.98rem; max-width: 60ch; margin: 0 0 20px; }
+
+/* ── The grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+
+button.plate {
+  appearance: none;
+  border: 1px solid rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.55);
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font: inherit;
+  color: inherit;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+button.plate:hover {
+  border-color: var(--crimson-deep);
+  box-shadow: 0 14px 34px -18px rgba(15,17,19,0.55);
+}
+.plate .frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #101214;
+}
+.plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .plate:hover img { transform: scale(1.025); }
+}
+.plate .meta { padding: 12px 14px 14px; }
+.plate .lbl {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--crimson-deep);
+  display: block;
+  margin-bottom: 5px;
+}
+.plate .open-cue {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ── The reader: full record, one click deep ── */
+dialog.reader {
+  border: 1px solid rgba(255,255,255,0.35);
+  background: #17191b;
+  color: #e8eaec;
+  padding: 0;
+  max-width: min(880px, calc(100vw - 32px));
+  width: 100%;
+  max-height: calc(100vh - 48px);
+}
+dialog.reader::backdrop { background: rgba(10, 11, 12, 0.72); }
+.reader-inner { display: flex; flex-direction: column; }
+.reader img {
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  background: #0b0d11;
+  display: block;
+}
+.reader .body { padding: 20px 26px 26px; }
+.reader .lbl {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d76a7e;
+  display: block;
+  margin-bottom: 10px;
+}
+.reader p { margin: 0; line-height: 1.65; color: rgba(244,245,246,0.92); max-width: 68ch; }
+.reader .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(23,25,27,0.85);
+  color: #e8eaec;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  padding: 8px 13px;
+  cursor: pointer;
+}
+.reader .close:hover { border-color: #d76a7e; color: #d76a7e; }
+
+footer {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 26px clamp(16px, 3.5vw, 40px) 60px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(244,245,246,0.75);
+}
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#plates-main">Skip to the plates</a>
+
+<div class="wrap">
+
+<header class="plate-head">
+  <div class="ph-brand">
+    <svg viewBox="0 0 240 240" role="img" aria-label="The Haus emblem">
+      <defs>
+        <linearGradient id="steel" gradientUnits="userSpaceOnUse" x1="0" y1="129.5" x2="0" y2="134.5">
+          <stop offset="0" stop-color="#A9ADB1"/>
+          <stop offset="1" stop-color="#7C8288"/>
+        </linearGradient>
+      </defs>
+      <line x1="128.2" y1="25.7" x2="52" y2="196" stroke="#1d1d1f" stroke-width="13"/>
+      <line x1="111.8" y1="25.7" x2="188" y2="196" stroke="#1d1d1f" stroke-width="13"/>
+      <line x1="58" y1="132" x2="182" y2="132" stroke="url(#steel)" stroke-width="6"/>
+      <line x1="204" y1="176" x2="204" y2="196" stroke="#C8102E" stroke-width="9"/>
+    </svg>
+    <div>
+      <div class="t">Amastatr Innovation <em>Haus</em></div>
+      <span class="s">The Plates · the image record</span>
+    </div>
+  </div>
+  <a class="ph-back" href="index.html">&larr; The front door</a>
+</header>
+
+<main id="plates-main">
+
+  <!-- COPY:DRAFT -->
+  <h1>The <em>Plates</em>.</h1>
+  <p class="dek">The record of the Haus in photographs: the progression from the culture to the bench, the first castings, the materials, and the archive of the line. Each plate carries a short line; open one and the full record reads out.</p>
+  <p class="count" id="plateCount"></p>
+
+  <div id="plateHost"></div>
+
+  <noscript>
+    <p>The plates render with JavaScript. The same record, with every photograph
+    and its full prose, is preserved in
+    <a href="legacy/haus_about_html_19.html">the v19 exhibition</a>.</p>
+  </noscript>
+
+</main>
+
+</div>
+
+<footer>
+  McAllen &middot; Austin &middot; Est. 2026 &middot; <a href="index.html">Amastatr Innovation Haus</a>
+</footer>
+
+<dialog class="reader" id="reader" aria-label="Plate record">
+  <div class="reader-inner">
+    <button class="close" id="readerClose" type="button">Close &#10005;</button>
+    <img id="readerImg" src="" alt="">
+    <div class="body">
+      <span class="lbl" id="readerLbl"></span>
+      <p id="readerText"></p>
+    </div>
+  </div>
+</dialog>
+
+<script src="assets/plates.js"></script>
+<script>
+/* Render the plate grid by line, and run the reader dialog. */
+(function () {
+  var LINES = [
+    { key: "prog", title: "The Progression", dek: "From inside the culture to the form that withstands it: five plates, in order." },
+    { key: "cast", title: "The First Castings", dek: "Before the enterprise had a name: concrete, rebar, and the article that stopped everything that hit it." },
+    { key: "bench", title: "The Bench", dek: "The materials as they sit on the bench: the steel, the binder, the fillers, the fibers." },
+    { key: "archive", title: "The Archive", dek: "The registers begin with people: four generations of the line, and the coordinates the Historiotempo keeps." }
+  ];
+
+  var host = document.getElementById("plateHost");
+  var plates = window.PLATES || [];
+  if (!host || !plates.length) return;
+
+  var countEl = document.getElementById("plateCount");
+  if (countEl) countEl.textContent = plates.length + " plates · the record grows by deposit";
+
+  LINES.forEach(function (line) {
+    var items = plates.filter(function (p) { return p.line === line.key; });
+    if (!items.length) return;
+
+    var h = document.createElement("h2");
+    h.className = "eyebrow";
+    var tick = document.createElement("span");
+    tick.className = "tick";
+    tick.setAttribute("aria-hidden", "true");
+    tick.textContent = "▍";
+    h.appendChild(tick);
+    h.appendChild(document.createTextNode(line.title));
+    host.appendChild(h);
+
+    var dek = document.createElement("p");
+    dek.className = "line-dek";
+    dek.textContent = line.dek;
+    host.appendChild(dek);
+
+    var grid = document.createElement("div");
+    grid.className = "grid";
+    items.forEach(function (p) {
+      var btn = document.createElement("button");
+      btn.className = "plate";
+      btn.type = "button";
+      btn.setAttribute("aria-haspopup", "dialog");
+
+      var frame = document.createElement("div");
+      frame.className = "frame";
+      var img = document.createElement("img");
+      img.src = p.src;
+      img.alt = p.alt;
+      img.loading = "lazy";
+      img.decoding = "async";
+      if (p.pos) img.style.objectPosition = p.pos;
+      frame.appendChild(img);
+      btn.appendChild(frame);
+
+      var meta = document.createElement("div");
+      meta.className = "meta";
+      var lbl = document.createElement("span");
+      lbl.className = "lbl";
+      lbl.textContent = p.label;
+      meta.appendChild(lbl);
+      var cue = document.createElement("span");
+      cue.className = "open-cue";
+      cue.textContent = "Open the record →";
+      meta.appendChild(cue);
+      btn.appendChild(meta);
+
+      btn.addEventListener("click", function () { openReader(p); });
+      grid.appendChild(btn);
+    });
+    host.appendChild(grid);
+  });
+
+  var reader = document.getElementById("reader");
+  var rImg = document.getElementById("readerImg");
+  var rLbl = document.getElementById("readerLbl");
+  var rText = document.getElementById("readerText");
+  var rClose = document.getElementById("readerClose");
+
+  function openReader(p) {
+    rImg.src = p.src;
+    rImg.alt = p.alt;
+    rLbl.textContent = p.label;
+    rText.textContent = p.text;
+    if (typeof reader.showModal === "function") reader.showModal();
+  }
+  function closeReader() { reader.close(); rImg.src = ""; }
+
+  if (rClose) rClose.addEventListener("click", closeReader);
+  reader.addEventListener("click", function (e) {
+    if (e.target === reader) closeReader();
+  });
+})();
+</script>
+
+</body>
+</html>

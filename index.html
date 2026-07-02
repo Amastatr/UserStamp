@@ -29,6 +29,7 @@
 <link rel="preload" href="assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/newsreader-var-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/images/hero-the-becoming.jpg" as="image">
 
 <script>
 /* Emblem entrance gate: draw once per session, never under reduced motion.
@@ -397,6 +398,109 @@ footer .prior { margin-top: 18px; font-size: 0.86rem; }
 footer a { color: var(--ink-mute); }
 footer a:hover { color: var(--crimson); }
 
+/* ── The hero plate: visual arrival, text never beneath it ── */
+.hero-figure {
+  margin: 0 calc(-1 * clamp(20px, 4.5vw, 48px)) 0;
+  position: relative;
+}
+.hero-figure img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 46vh, 440px);
+  object-fit: cover;
+  object-position: center 32%;
+}
+.hero-figure figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(244,245,246,0.92);
+  padding: 26px 18px 12px;
+  background: linear-gradient(to top, rgba(8,9,11,0.78), rgba(8,9,11,0));
+}
+.hero-figure figcaption a { color: #fff; }
+
+/* ── Layered reading: the disclosure ── */
+details.read-on { margin-top: 14px; }
+details.read-on summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--crimson-deep);
+  list-style: none;
+  display: inline-block;
+  border-bottom: 1px solid var(--crimson-deep);
+  padding-bottom: 2px;
+}
+details.read-on summary::-webkit-details-marker { display: none; }
+details.read-on summary::after { content: " \2192"; }
+details.read-on[open] summary::after { content: " \2191"; }
+details.read-on > p { margin-top: 16px; }
+
+/* ── Venture thumbnails ──
+   Children are placed explicitly: auto-flow would seat the thesis in
+   the third column beside the name. */
+.venture { grid-template-columns: 76px 1fr auto; }
+.venture .vname, .venture .vthesis, .venture .vstatus { grid-column: 2; }
+.vthumb {
+  grid-row: 1 / span 3;
+  grid-column: 3;
+  width: 148px;
+  height: 104px;
+  object-fit: cover;
+  align-self: center;
+  margin-left: 18px;
+  border: 1px solid rgba(0,0,0,0.16);
+}
+@media (max-width: 560px) {
+  .venture { grid-template-columns: 1fr; }
+  .venture .vname, .venture .vthesis, .venture .vstatus { grid-column: auto; }
+  .vthumb { grid-row: auto; grid-column: auto; order: -1; width: 100%; height: 170px; margin-left: 0; margin-bottom: 10px; }
+}
+
+/* ── The plates teaser ── */
+.teaser {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+@media (max-width: 640px) { .teaser { grid-template-columns: repeat(2, 1fr); } }
+a.tease {
+  display: block;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.5);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+a.tease:hover {
+  border-color: var(--crimson-deep);
+  box-shadow: 0 14px 34px -18px rgba(15,17,19,0.5);
+}
+a.tease .frame { aspect-ratio: 4 / 3; overflow: hidden; background: #101214; }
+a.tease img { width: 100%; height: 100%; object-fit: cover; display: block; }
+a.tease .lbl {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 9px 11px;
+}
+.plates-cta {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 22px;
+}
+
 /* ── The emblem draws itself: once per session, skipped under
       reduced motion, and the text never waits on it. ── */
 @media (prefers-reduced-motion: no-preference) {
@@ -461,29 +565,44 @@ footer a:hover { color: var(--crimson); }
   <nav class="doors" aria-label="Sections">
     <a href="#doctrine">Doctrine</a>
     <a href="#register">Register</a>
+    <a href="#plates">Plates</a>
     <a href="#writing">Writing</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
+<!-- The visual arrival: one plate carries the front door. -->
+<figure class="hero-figure">
+  <img src="assets/images/hero-the-becoming.jpg" width="880" height="829"
+       alt="A young man in a mirror selfie wearing a blue face shield, yellow welding apron, and welding gauntlets"
+       fetchpriority="high" decoding="async">
+  <!-- COPY:DRAFT -->
+  <figcaption>The bench, Austin &middot; 1075 blue-tempered spring steel &middot; <a href="plates.html">the plates &rarr;</a></figcaption>
+</figure>
+
 <main id="main">
 
 <section id="doctrine" aria-labelledby="doctrine-h">
   <h2 class="eyebrow" id="doctrine-h"><span class="tick" aria-hidden="true">&#9613;</span>The Doctrine</h2>
   <div class="body">
-    <!-- COPY:DRAFT -->
+    <!-- COPY:DRAFT · layered: the opening stands alone, the rest reads on request -->
     <p class="lead">
       The Haus is held to one discipline: build what survives its encounter with the world.
       Its materials are matter and record, steel and glass and language, chosen the way a bench chooses them, for how they behave under load.
-      Entropy is not treated as the enemy here; it is the condition, and design is the answer the Haus gives it in material form.
-      Force is studied with respect and answered with structure: the panel that takes the second strike, the system that takes the second year, the sentence that takes the second reading.
-      Impact is the only review that matters, and it files on its own schedule.
-      What the Haus makes is meant to age into patina rather than failure, holding its coordinates while the surrounding weather moves.
-      Creation is treated as a form of accounting: every made thing is a claim about what deserves to persist, entered in the register and kept.
-      The ventures below are one architecture read in different materials.
-      This page is the front door, and the door is load-bearing.
     </p>
+    <details class="read-on">
+      <summary>Read the doctrine in full</summary>
+      <p class="lead">
+        Entropy is not treated as the enemy here; it is the condition, and design is the answer the Haus gives it in material form.
+        Force is studied with respect and answered with structure: the panel that takes the second strike, the system that takes the second year, the sentence that takes the second reading.
+        Impact is the only review that matters, and it files on its own schedule.
+        What the Haus makes is meant to age into patina rather than failure, holding its coordinates while the surrounding weather moves.
+        Creation is treated as a form of accounting: every made thing is a claim about what deserves to persist, entered in the register and kept.
+        The ventures below are one architecture read in different materials.
+        This page is the front door, and the door is load-bearing.
+      </p>
+    </details>
   </div>
 </section>
 
@@ -507,6 +626,19 @@ footer a:hover { color: var(--crimson); }
       <li style="padding:16px 0; border-top:1px solid rgba(0,0,0,0.14); border-bottom:1px solid rgba(0,0,0,0.14);">The Lexicon &middot; the relational knowledge work &middot; kept on its own timescale</li>
     </ol>
   </noscript>
+</section>
+
+<hr class="rule" aria-hidden="true">
+
+<section id="plates" aria-labelledby="plates-h">
+  <h2 class="eyebrow" id="plates-h"><span class="tick" aria-hidden="true">&#9613;</span>The Plates</h2>
+  <div class="body">
+    <!-- COPY:DRAFT -->
+    <p>The record of the Haus in photographs. A short line under each; the full record one click deep, for the reader who wants it.</p>
+  </div>
+  <div class="teaser" id="platesTeaser"></div>
+  <p class="plates-cta"><a href="plates.html">Enter the plates &rarr;</a></p>
+  <noscript><p><a href="plates.html">The plates</a> hold the image record.</p></noscript>
 </section>
 
 <hr class="rule" aria-hidden="true">
@@ -585,7 +717,9 @@ footer a:hover { color: var(--crimson); }
       name: "ImpactStop",
       thesis: "Multi-hit protective armor engineered against the failure the ceramic incumbents share: the second strike. Armor only; that is a vow, not a positioning.",
       status: "Materials R&D · McAllen · Austin",
-      a: "#6B521A", b: "#2B2E31", tint: "rgba(143,110,30,0.08)"
+      a: "#6B521A", b: "#2B2E31", tint: "rgba(143,110,30,0.08)",
+      img: "assets/images/shot-article-impact-face.jpg",
+      imgAlt: "The impact face of a tape-wrapped cast article, densely cratered with embedded fragments"
     },
     {
       name: "Patina Works",
@@ -609,7 +743,9 @@ footer a:hover { color: var(--crimson); }
       name: "The Lexicon",
       thesis: "The relational knowledge work: one linguistic identity archived whole, analyzed without sentiment, and positioned against the field of human expression.",
       status: "v0 · kept cold and local · its own timescale",
-      a: "#0b0d11", b: "#C4C8CB", tint: "rgba(11,13,17,0.06)"
+      a: "#0b0d11", b: "#C4C8CB", tint: "rgba(11,13,17,0.06)",
+      img: "assets/images/graf-spee-bound-volume.jpg",
+      imgAlt: "A bound volume of the Illustrated London News open to the Graf Spee burning off Montevideo"
     }
   ];
 
@@ -648,7 +784,57 @@ footer a:hover { color: var(--crimson); }
     status.appendChild(document.createTextNode(v.status));
     li.appendChild(status);
 
+    if (v.img) {
+      var thumb = document.createElement("img");
+      thumb.className = "vthumb";
+      thumb.src = v.img;
+      thumb.alt = v.imgAlt || "";
+      thumb.loading = "lazy";
+      thumb.decoding = "async";
+      li.appendChild(thumb);
+    }
+
     host.appendChild(li);
+  });
+})();
+</script>
+
+<script src="assets/plates.js"></script>
+<script>
+/* The plates teaser: six named plates from the shared record. */
+(function () {
+  var host = document.getElementById("platesTeaser");
+  var plates = window.PLATES || [];
+  if (!host || !plates.length) return;
+  var PICK = [
+    "assets/images/the-becoming-face-shield.jpg",
+    "assets/images/shot-article-impact-face.jpg",
+    "assets/images/shot-article-reverse.jpg",
+    "assets/images/gun-show-red-rifle.jpg",
+    "assets/images/graf-spee-bound-volume.jpg",
+    "assets/images/tool-steel-heat-bloom.jpg"
+  ];
+  PICK.forEach(function (src) {
+    var p = plates.find(function (x) { return x.src === src; });
+    if (!p) return;
+    var a = document.createElement("a");
+    a.className = "tease";
+    a.href = "plates.html";
+    var frame = document.createElement("div");
+    frame.className = "frame";
+    var img = document.createElement("img");
+    img.src = p.src;
+    img.alt = p.alt;
+    img.loading = "lazy";
+    img.decoding = "async";
+    if (p.pos) img.style.objectPosition = p.pos;
+    frame.appendChild(img);
+    a.appendChild(frame);
+    var lbl = document.createElement("span");
+    lbl.className = "lbl";
+    lbl.textContent = p.label;
+    a.appendChild(lbl);
+    host.appendChild(a);
   });
 })();
 </script>
